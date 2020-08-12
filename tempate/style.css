@@ -1,3 +1,4 @@
+/*parei em 43:50*/
 html{
     font-size: 62.5%;
     box-sizing: border-box;
@@ -100,6 +101,7 @@ a:hover{
 .product-rating{
   margin-bottom: 1rem;
 }
+
 /* Sidebar*/
 .brand button{
     font-size: 3rem;
@@ -107,4 +109,16 @@ a:hover{
     background: none;
     border: none;
     color: #ffffff;
+    cursor: pointer;
+}
+
+.sidebar {
+    position: fixed;
+    transform: translateX(-30rem);
+    width: 30rem;
+    background-color: #f0f0f0;
+}
+
+.sidebar.open{
+    transform: translateX(0);
 }
