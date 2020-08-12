@@ -1,15 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+import data from './data';
 import './App.css';
 
 function App() {
+
+  const openMenu = () => {
+    document.querySelector(".sidebar").classList.add("open");
+  }
+  const closeMenu = () => {
+    document.querySelector(".sidebar").classList.remove("open");
+  }
+
   return (
 
     <div className="grid-container">
 
       <header className="header">
         <div className="brand">
-          <button onclick="openMenu()">&#9776;</button>
+          <button onClick={openMenu}>&#9776;</button>
           <a href="index.html">Amazon</a>
         </div>
         <div className="header-links">
@@ -20,13 +28,13 @@ function App() {
 
       <aside className="sidebar">
         <h3>Shopping Categories</h3>
-        <button className="sidebar-close-button" onclick="closeMenu()">x</button>
+        <button className="sidebar-close-button" onClick={closeMenu}>x</button>
         <ul>
           <li>
             <a href="index.html">Pants</a>
           </li>
           <li>
-            <a href="index.html">Shrts</a>
+            <a href="index.html">Shirts</a>
           </li>
         </ul>
       </aside>
@@ -34,23 +42,29 @@ function App() {
       <main className="main">
 
         <div className="content">
-
           <ul className="products">
-            <li>
-              <div className="product">
-                <img className="product-image" src="./images/d1.jpeg" alt="product" />
-                <div className="product-name">
-                  <a href="product.html">Slim Shirt</a>
-                </div>
-                <div className="product-brand">Nike</div>
-                <div className="product-price">$60</div>
-                <div className="product-rating">$60</div>
-              </div>
-            </li>
+
+            {
+
+              data.products.map(product =>
+
+                <li key={product.name}>
+                  <div className="product">
+                    <img className="product-image" src={product.image} alt="product" />
+                    <div className="product-name">
+                      <a href="product.html">{product.name}</a>
+                    </div>
+                    <div className="product-brand">{product.brand}</div>
+                    <div className="product-price">${product.price}</div>
+                    <div className="product-rating">{product.rating} Stars {product.numReviews}</div>
+                  </div>
+                </li>
+
+              )
+            }
+
           </ul>
-
         </div>
-
       </main>
 
       <footer className="footer">
